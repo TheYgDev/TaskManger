@@ -1,0 +1,20 @@
+<td>
+  <div class="d-flex ms-3 align-items-center">
+      <p class="fw-bold mb-1">{{task.title}}</p>
+  </div>
+</td>
+<td>
+    <div class="d-flex ms-3 align-items-center">
+        <p class="fw-normal mb-1">{{task.description}}</p>
+    </div>
+</td>
+<td> 
+  <edit-drop-down  [list]="priorityList" [selected]="priority" [design]="priorityDesign" (selectedValue)="changePriority($event)"></edit-drop-down>
+</td>
+<td>
+  <edit-drop-down  [list]="isDoneList" [selected]="isDone" [design]="isDoneDesign" (selectedValue)="changeDone($event)"></edit-drop-down>
+</td>
+<td>
+  <button type="button" [routerLink]="'/updateTask/'+task._id" class="btn btn-link btn-sm btn-rounded">Edit</button>/
+  <button type="button" (click)="deleteTask()" class="btn btn-link btn-sm btn-rounded">Delete</button>
+</td>

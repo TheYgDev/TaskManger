@@ -1,0 +1,5 @@
+<div class="container card my-5">
+<h1 class="mb-5">This is a work in prograss</h1>
+<h6 *ngIf="logged"><a [routerLink]="'/tasks'">Check Out our Tasks</a></h6>
+<h6 *ngIf="!logged" ><a [routerLink]="'/login/loginForm'">Login in to check out more</a></h6>
+</div>

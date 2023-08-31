@@ -1,0 +1,34 @@
+<div style="height: auto;" class="card my-5">
+    <form  name="addNewForm" #addNewForm="ngForm" class="row p-0">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col"><h4><b>{{formTitle}}</b></h4></div>
+                </div>
+            </div>        
+            <div class="mb-5 pb-4">
+                <input class="form-control" name="title" [(ngModel)]="task.title" required minlength="3" #title="ngModel" type="text" placeholder="Title">
+                    
+                <label for="priority">Priority</label>
+                <select  name="priority" class="form-control" [(ngModel)]="task.priority" required #priority="ngModel" >
+                    <option *ngFor="let p of priortyList" [ngValue]="p.value">{{p.name}}</option>
+                </select>
+                <div class="input-group">
+                    <textarea style="height: 7rem;" class="form-control " minlength="5" name="description" [(ngModel)]="task.description" required #description="ngModel" type="text" placeholder="Description"></textarea>
+                </div>
+            </div>   
+            <div routerLink="/tasks" class="my-4 position-absolute bottom-0 back-to-shop"><a>&leftarrow;</a><span class=" text-muted">Back to Task List</span></div>
+        </div>
+        <div class="col-md-4 summary">
+            <div><h5><b>Info</b></h5></div>       
+            <div class="row pb-5 mb-5" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">    
+            <div class="error" *ngIf="title.value.length === 0 && title.dirty">Title is required.</div>
+            <div class="error" *ngIf="title.invalid && title.dirty && title.value.length < 5 &&title.value.length !== 0 ">Title must be at least 3 characters long.</div>
+            <div class="error" *ngIf="priority.invalid && priority.dirty">Priority is required.</div>
+            <div class="error" *ngIf="description.value.length === 0 && description.dirty">Description is required.</div>
+            <div class="error" *ngIf="description.invalid && description.dirty && description.value.length < 5 && description.value.length !== 0 ">Description must be at least 5 characters long.</div>
+        </div>
+            <button [disabled]="addNewForm.form.invalid" (click)="submit()"  class="btn">Submit</button>
+        </div>
+    </form>
+</div>

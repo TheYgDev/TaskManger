@@ -1,0 +1,4 @@
+<select class="{{design}}" (change)="onChange()" [(ngModel)]="selected">
+    <option class="text-left" *ngFor="let c of list" [ngValue]="c">{{ c.name }}</option>
+  </select>
+  

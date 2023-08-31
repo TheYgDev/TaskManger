@@ -1,0 +1,32 @@
+<div class="w-100 justify-content-center d-flex" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+    <form name="regForm" #regForm="ngForm" (ngSubmit)="register()" class="w-50">
+      <p class="text-center">Sign Up</p>
+      <div class="error" *ngIf="errorMassage">{{errorMassage}}</div>
+      <div class="form-outline mb-4">
+        <label class="form-label" for="registerName">Full Name</label>
+        <input type="text" name="fullName" [(ngModel)]="user.fullName" required #fullName="ngModel" class="form-control" />
+      <div class="error" *ngIf="fullName.invalid && fullName.dirty || fullName.invalid && submited">Full Name is required</div>
+      </div>
+
+      <div class="form-outline mb-4">
+        <label class="form-label" for="registerUsername">Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="user.username"  required #username="ngModel"/>
+      <div class="error" *ngIf="username.invalid && username.dirty || username.invalid && submited">User name is required</div>
+
+      </div>
+
+      <div class="form-outline mb-4">
+        <label class="form-label" for="registerEmail">Email</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="user.email" required #email="ngModel" />
+      <div class="error" *ngIf="email.invalid && email.dirty || email.invalid && submited">Email is required</div>
+
+      </div>
+
+      <div class="form-outline mb-4">
+        <label class="form-label" for="registerPassword">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="user.password" required #password="ngModel" />
+      <div class="error" *ngIf="password.invalid && password.dirty || password.invalid && submited">Password is required</div>
+      </div>  
+      <button type="submit" class="btn btn-primary btn-block mb-3">Sign up</button>
+    </form>
+  </div>

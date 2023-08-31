@@ -1,0 +1,27 @@
+<div class="w-100 justify-content-center d-flex" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+
+<form name="loginForm" #loginForm="ngForm" class="w-50">
+    <div class="text-center mb-3">
+      <p>Sign in</p>
+      <div class="error" *ngIf="incorrect">Invalid Password</div>
+      <div class="error" *ngIf="invalid">No such user</div>
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" >Email or Username</label>
+      <input name="username" [(ngModel)]="user.username" required #username="ngModel" type="email" class="form-control" />
+      <div class="error" *ngIf="username.invalid && username.dirty || username.invalid && submited">Email is required</div>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" >Password</label>
+      <input name="password" [(ngModel)]="user.password" required #password="ngModel" type="password" class="form-control" />
+      <div class="error" *ngIf="password.invalid && password.dirty || password.invalid && submited">Email is required</div>
+    </div>
+
+    
+    <button (click)="login()"  class="btn btn-primary btn-block mb-4">Sign in</button>
+  </form>
+</div>

@@ -1,0 +1,82 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div [ngSwitch]="menuType" class="container px-4 px-lg-5">
+    <a class="navbar-brand" routerLink="/">TaskManger+</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div *ngSwitchCase="'logged'" class="collapse navbar-collapse" id="navbarSupportedContent">     
+      <ul  class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            id="navbarDropdown"
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Manger</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/tasks">All Tasks</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" routerLink="/new/task">Add New Task</a>
+            </li>
+            <li><a class="dropdown-item" routerLink="/">Users</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <button
+          class="btn btn-outline-dark"
+          (click)="logOut()"
+          type="submit">
+          <i class="bi-cart-fill me-1"></i>
+          LogOut
+        </button>
+      </form>
+
+    </div>
+    <div *ngSwitchCase="'default'" class="collapse navbar-collapse" id="navbarSupportedContent">     
+        <ul  class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/">About</a>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <button
+              class="btn btn-outline-dark"
+              [routerLink]="'/login/loginForm'">
+              <i class="bi-cart-fill me-1"></i>
+              Login
+            </button>
+            <button
+              class="btn btn-outline-dark"
+              [routerLink]="'/login/registerForm'">
+              <i class="bi-cart-fill me-1"></i>
+              Register
+            </button>
+          </div>
+    </div>
+     
+
+
+     
+  </div>
+</nav>

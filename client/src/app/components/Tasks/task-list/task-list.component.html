@@ -1,0 +1,25 @@
+<section class="py-5">
+  <div class="container card px-4 px-lg-5 mt-5 bg-secondary">
+    <div class="d-flex justify-content-between mt-5 drop">
+        <edit-drop-down style="width: 15%;" [list]="priorityList" [selected]="priorityList[0]" (selectedValue)="filter($event)"></edit-drop-down>
+        <edit-drop-down style="width: 15%;" [list]="isDoneList" [selected]="isDoneList[0]" (selectedValue)="filter($event)"></edit-drop-down>
+        <input type="text" name="text" [(ngModel)]="searchKey" class="input" placeholder="Search...">
+    </div>
+    <div class="row pb-2 mb-4" style="border-bottom: 1px solid rgba(0,0,0,.1); padding: 2vh 0;"> </div>  
+    <table class="table table-hover align-middle mb-5 table-dark">
+      <thead>
+            <button type="button" routerLink="/new/task" class="mb-2 btn btn-dark">+</button>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Priorty</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of filterTaskList | filter:searchKey:['title','description']"  app-task (taskDeleted)="taskDel($event)" (taskChanged)="update($event)" [task]="task"  ></tr>
+          </tbody>
+        </table>
+    </div>
+</section>
